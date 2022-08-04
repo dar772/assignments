@@ -1,0 +1,107 @@
+
+1. Compare whether 2 JSONS have the same properties without order
+
+
+let obj1 = {
+  "Name": "Person 1",
+  "Age": 20,
+};
+
+
+let obj2 = {
+  "Age": 22,
+  "Name": "Person 2",
+};
+
+
+let obj3 = {
+  "Age": 20,
+  "Name": "Person 1"
+}
+
+
+;
+
+if(obj1["Name"] === obj2["Name"] && obj1["Age"] === obj2["Age"]){
+
+    console.log("obj1 and obj2 are the same");
+
+}
+
+
+
+if(obj1["Name"] === obj3["Name"] && obj1["Age"] === obj3["Age"]){
+
+    console.log("obj1 and obj3 are the same");
+
+}
+
+
+
+// Or another way
+
+
+let myKeys = Object.keys(obj1);
+
+console.log(myKeys);
+
+
+
+if(obj1[myKeys[1]] === obj3[myKeys[1]] && obj1[myKeys[0]] === obj3[myKeys[0]]){
+
+  console.log("obj1 and obj3 are same");
+
+}
+
+
+
+if(obj1[myKeys[0]] === obj2[myKeys[0]] && obj1[myKeys[1]] === obj2[myKeys[1]]){
+
+  console.log("obj1 and obj2 are the same");
+
+}
+
+
+
+
+__________________
+
+
+
+2.  Display all Country Flags in the console   
+
+let request = new XMLHttpRequest();
+        request.open('GET', 'https://restcountries.com/v3.1/all', true);
+        
+        request.send();
+
+        request.onload = function(){
+            var data = JSON.parse(this.response);
+           // console.log(data);
+            
+            for(i=0; i<data.length; i++){
+                console.log(data[i].flag, data[i].flags.png);
+            }
+        }
+
+__________________
+
+
+3. Print Name, Region, Sub Region and Population
+
+
+        let request = new XMLHttpRequest();
+
+        request.open('Get',"https://restcountries.com/v3.1/all", true);
+
+        request.send();
+
+        request.onload = function(){
+
+        var data = JSON.parse(this.response);
+        console.log(data);
+
+        for(i=0; i<data.length; i++){
+        console.log("Name: " + data[i].name.official +" Region: " + data[i].region +" Sub-Region: "+  data[i].subregion +" Population: "+ data[i].population);
+        }
+    }
