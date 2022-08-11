@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class Movie {
+        constructor(title, studio, rating, year) {
+          this.title = title;
+          this.studio = studio;
+          this.rating = rating;
+          this.year = year;
+
+          if (rating == null || rating == "") {
+            this.rating = "PG";
+          }
+        }
+
+        getPG(arrMovie) {
+          let PGMovies = arrMovie.filter((ele) => ele.rating == "PG");
+          return [...PGMovies];
+        }
+
+        getR(arrMovie) {
+          let Rmovies = arrMovie.filter((movie) => movie.rating == "R");
+          return [...Rmovies];
+        }
+
+        getPG13(arrMovie) {
+          let PG13Movies = arrMovie.filter((movie) => movie.rating == "PG-13");
+          return [...PG13Movies];
+        }
+      }
+
+      //movie9, movie 13 are not rated
+
+      let movie1 = new Movie();
+      let movie2 = new Movie("Casino Royale", "Eon Productions", "PG-13", 2006);
+      let movie3 = new Movie("Titanic", "Paramount Pictures", "PG-13", 1997);
+      let movie4 = new Movie("Avengers Endgame","Marvel Studios","PG-13", 2019);
+      let movie5 = new Movie("Clueless", "Paramount Pictures", "PG-13", 1995);
+      let movie6 = new Movie("The Godfather", "Paramount Pictures", "R", 1972);
+      let movie7 = new Movie("The Exorcist", "Hoya Productions", "R", 1973);
+      let movie8 = new Movie("Scream", "Woods Entertainment", "R", 1996);
+      let movie9 = new Movie("The Dark Knight", "Warner Bros. Pictures", "", 2008);
+      let movie10 = new Movie("The Matrix", "Warner Bros. Pictures", "R", 1999);
+      let movie11 = new Movie("Die Hard", "Silver Pictures", "R", 1998);
+      let movie12 = new Movie("Gone with the Wind","Metro-Goldwyn-Mayer","Passed", 1939);
+      let movie13 = new Movie("The Sixth Sense", "Hollywood Pictures", "", 1999);
+
+      let AllMovies = [movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10, movie11, movie12, movie13];
+
+      //Function to print the movie data
+      let printMovies = (movies) => {
+        let x = [];
+        for (i = 0; i < movies.length; i++) {
+       let temp = `Title: ${movies[i].title},
+       Studio: ${movies[i].studio},
+       Rating: ${movies[i].rating},
+       Year: ${movies[i].year},
+       ________________
+       `;
+          x.push(temp);
+        }
+        return x;
+      };
+
+      let PGMovies = movie1.getPG(AllMovies);
+      console.log("PG Movies..... \n", ...printMovies(PGMovies));
+
+      let PG13Movies = movie1.getPG13(AllMovies);
+      console.log("PG-13 Movies..... \n", ...printMovies(PG13Movies));
+
+      let Rmovies = movie1.getR(AllMovies);
+      console.log("R Movies..... \n", ...printMovies(Rmovies));
+    </script>
+  </body>
+</html>
