@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+      class Person {
+        constructor(fname, lname, age, gender, occupation, relationship, hobbies){
+          this.fname = fname,
+          this.lname = lname,
+          this.age = age,
+          this.gender = gender,
+          this.occupation = occupation,
+          this.relationship = relationship,
+          this.hobbies = hobbies;
+
+          if (gender === "") {
+            this.gender = "Other";
+          }
+
+          if (relationship == "") {
+            this.relationship = "Complicated";
+          }
+        }
+
+        getFemale(arr) {
+          let Females = arr.filter((ele) => ele.gender == "Female");
+          return Females;
+        }
+
+        getMale(arr) {
+          let Males = arr.filter((ele) => ele.gender == "Male");
+          return Males;
+        }
+
+        getOther(arr) {
+          let Other = arr.filter((ele) => ele.gender == "Other");
+          return Other;
+        }
+
+        singlePeople(arr) {
+          let Singles = arr.filter((ele) => ele.relationship == "Single");
+          return Singles;
+        }
+
+        marriedPeople(arr) {
+          let Married = arr.filter((ele) => ele.relationship == "Married");
+          return Married;
+        }
+
+        complicatedRelationships(arr) {
+          let Complicated = arr.filter(
+            (ele) => ele.relationship == "Complicated"
+          );
+          return Complicated;
+        }
+
+        people25AndAbove(arr) {
+          let above25 = arr.filter((ele) => ele.age >= 25);
+          return above25;
+        }
+
+        people25AndBelow(arr) {
+          let below25 = arr.filter((ele) => ele.age < 25);
+          return below25;
+        }
+
+        getStudents(arr) {
+          let students = arr.filter((ele) => ele.occupation === "Student");
+          return students;
+        }
+      }
+
+      let person1 = new Person();
+      let person2 = new Person("Oliver", "Maxmilliam", 56, "Male", "Pilot", "Married", ["Exercising", "Singing", "Sports"]);
+      let person3 = new Person("Charlotte", "Wren", 25, "Female", "Nurse", "Single", ["Exercising", "Movies"]);
+      let person4 = new Person("Declan", "Andrews", 33, "Male", "Engineer", "Married", ["Movies", "Sports"]);
+      let person5 = new Person("Aurora", "Benjamin", 28, "Female", "Social Worker", "Married", ["Music", "TV Shows", "Cooking", "Exercising"]);
+      let person6 = new Person("Elizabeth", "Woakes", 42, "Female", "Physician", "Married", ["Cooking", "Movies", "Art", "TV Shows"]);
+      let person7 = new Person("Rebecca", "Allan", 24, "Female", "Student", "Single", ["Dancing", "Singing", "Art", "Movies"]);
+      let person8 = new Person("Anastasia", "Flynn", 24, "Female", "Event Planner", "", ["Art", "Writing", "Poetry", "Gaming"]);
+      let person9 = new Person("Ruth", "Simons", 28, "Female", "Teacher", "", ["Music", "Drawing", "Sports"]);
+      let person10 = new Person("James", "Egan", 27, "Male", "Psychiatrist", "Single", ["Gaming", "Cooking", "Sports"]);
+      let person11 = new Person("John", "Fernandez", 49, "Male", "Nurse", "Married", ["Hiking", "Sports", "Music", "Cooking", "Gaming"]);
+      let person12 = new Person("Scarlett", "Flynn", 51, "", "Teacher", "Married", ["Hiking", "Sports", "Swimming", "Music"]);
+      let person13 = new Person("Daphne", "Thompson", 20, "", "Student", "Single", ["Gaming", "Music", "Anime", "Art", "Writing"]);
+      let person14 = new Person("Peter", "Zachary", 22, "Male", "Student", "", ["Gaming", "Cooking", "Anime", "Writing"]);
+
+      let people = [person2,person3,person4,person5,person6,person7,person8,person9,person10,person11,person12,person13,person14];
+
+      //console.log(people)
+
+      let display = (arr) => {
+        let people = [];
+        for (i = 0; i < arr.length; i++) {
+          let person = `
+          Full Name: ${arr[i].fname} ${arr[i].lname},
+          Age: ${arr[i].age},
+          Gender: ${arr[i].gender},
+          Occupation: ${arr[i].occupation}
+          Relationship Status: ${arr[i].relationship}
+          Hobbies: ${arr[i].hobbies}
+
+          __________________`;
+          people.push(person);
+        }
+        return people;
+      };
+
+      /*
+        let under25 = person1.people25AndBelow(people);
+        console.log("People Under 25...", ...display(under25));
+      */
+
+      /*
+        let Women = person1.getFemale(people);
+        console.log("Women...", ...display(Women));
+
+        let Men = person1.getMale(people);
+        console.log("Men...", ...display(Men));
+      */
+
+      /*
+        let Singles = person1.singlePeople(people);
+        console.log("Single people...", ...display(Singles));
+
+        let Married = person1.marriedPeople(people);
+        console.log("Married people...", ...display(Married));
+      */
+
+      /*
+        let complicatedRelationships = person1.complicatedRelationships(people);
+        console.log("People in Complicated Relationships...", ...display(complicatedRelationships));
+      */
+
+      let Students = person1.getStudents(people);
+      console.log("Students...", ...display(Students));
+
+    </script>
+  </body>
+</html>
