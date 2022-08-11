@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+  <script>
+    let url = "https://restcountries.com/v3.1/all";
+    let request = new XMLHttpRequest();
+
+    request.open('GET', url, true);
+
+    request.send();
+
+    request.onload = function(){
+        let data = JSON.parse(this.response);
+        console.log(data);
+
+        let populationLessThan2Lakhs = data.filter((ele)=> ele.population < 200000).map((ele) =>{ 
+                return `Name: ${ele.name.common}, Population: ${ele.population} \n`;
+            });
+            
+        console.log(`Countries with population less than 2 lakhs is ${populationLessThan2Lakhs.length}`);
+        console.log(...populationLessThan2Lakhs);
+
+    }
+  </script>
+</body>
+</html>

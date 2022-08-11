@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let url = "https://restcountries.com/v3.1/all";
+
+        let request = new XMLHttpRequest();
+
+        request.open('GET', url, true);
+
+        request.send();
+
+        request.onload = function(){
+            let data = JSON.parse(this.response);
+            console.log(data);
+
+           /* let usdCurrency = data.map((ele)=> ele.currencies)
+            console.log(usdCurrency);
+            */ 
+            let dummy = [];
+
+            for(i=0; i< data.length; i++){
+             //console.log(`${data[i].name.common} ${data[i].currencies}`);
+            let temp = data[i].currencies;
+            let myKeys = "";
+            if(temp !== null || temp !== undefined){
+            myKeys = Object.keys(temp);
+            }
+            console.log(i, myKeys);
+
+           for(j=0; j<myKeys.length; j++){
+            if(myKeys[j] == "USD"){
+            console.log(data[i].name.common, data[i].currencies);
+            }
+            }
+        }
+
+            console.log(`My Dummy ${dummy}`)
+        }
+    </script>
+</body>
+</html>
