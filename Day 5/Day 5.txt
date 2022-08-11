@@ -1,0 +1,197 @@
+let arr = [1,2,3,4,5,6,7,8,9,10,11,12];
+
+
+
+// Print even nums using normal function
+
+
+function even(arr){
+  
+
+let evenNums = [];
+  
+for(i=0; i<arr.length; i++){
+
+    if(parseInt(arr[i]) % 2 === 0){
+
+      evenNums.push(arr[i]);
+
+    }
+
+  }
+
+  return evenNums;
+
+}
+
+
+console.log(`Even nums using basic function ...${even(arr)}`);
+
+
+
+// Print even nums using anonymous function
+
+
+
+let evensAnonymous = function(arr){
+
+  let evenNums = [];
+
+   for(i=0; i<arr.length; i++){
+
+    if(parseInt(arr[i]) % 2 === 0){
+
+      evenNums.push(arr[i]);
+
+    }
+
+  }
+
+  return evenNums;
+
+}
+
+
+
+console.log(`Even nums using Anonymous function ${evensAnonymous(arr)}`);
+
+
+
+
+// Print even nums using arrow function
+
+
+
+let myEvensArrow = (arr)=>{
+
+
+  let evenNums = [];
+
+   for(i=0; i<arr.length; i++){
+
+    if(parseInt(arr[i]) % 2 === 0){
+
+      evenNums.push(arr[i]);
+
+    }
+
+  }
+
+  return evenNums;
+
+}
+
+
+
+console.log(`Even nums using Arrow function ${myEvensArrow(arr)}`);
+
+
+
+
+
+// Print even nums using IIFE function
+
+
+
+let myEvensIIFE = (function(arr){
+
+  let evenNums = [];
+
+   for(i=0; i<arr.length; i++){
+
+    if(parseInt(arr[i]) % 2 === 0){
+
+      evenNums.push(arr[i]);
+
+    }
+
+  }
+
+  console.log(`Even nums using IIFE function ${evenNums}`)
+;
+})(arr);
+
+
+__________________________________________________________
+__________________________________________________________
+
+
+// Print sum of all nums using normal function
+
+
+
+function sum(arr){
+
+  let total = 0;
+
+  for(i=0; i<arr.length; i++){
+
+    total += parseInt(arr[i]);
+
+  }
+
+  return total;
+
+}
+
+
+console.log(`Sum of all nums using basic function ${sum(arr)}`);
+
+
+// Print sum of all nums using anonymous function
+
+
+
+let mySumAnonymous = function(arr){
+
+  let total = 0;
+
+  for(i=0; i<arr.length; i++){
+
+    total += parseInt(arr[i]);
+
+  }
+  return total;
+
+}
+
+
+
+console.log(`Sum of all nums using Anonymous function ${mySumAnonymous(arr)}`);
+
+
+
+let mySumArrow = (arr)=>{
+
+  let total = 0;
+
+  for(i=0; i<arr.length; i++){
+
+    total += parseInt(arr[i]);
+
+  }
+
+  return total;
+
+}
+
+
+console.log(`Sum of all nums using Arrow function ${mySumArrow(arr)}`);
+
+
+// Print sum of all nums using IIFE function
+
+
+(function(arr){
+
+  let total = 0;
+
+  for(i=0; i<arr.length; i++){
+
+    total += parseInt(arr[i]);
+
+  }
+
+  console.log(`Sum of all nums using IIFE function ${total}`);
+
+})(arr);
