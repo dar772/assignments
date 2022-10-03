@@ -11,12 +11,12 @@ for(var i=5; i>0; i--){
   
    }
  
-     console.log(str);
- 
-     str = "";
+     
+     str += "\n";
 
 }
-
+console.log(str);
+ 
 
 /*
 
@@ -40,37 +40,34 @@ __________________________________
 var str = "";
 
 
+for(i=1; i<=5; i++){
+  
+ for(j=1; j<=i; j++){
 
-for(var i=1; i<=5; i++){
-
-  for(var j=1; j<=i; j++){
-
-    str+= "*";
+    str += "*";
 
   }
 
-  
-  console.log(str);
-  
-    str = "";
+  str +="\n";
+
+}
+
+
+for(i=4; i>0; i--){
+
+  for(j=i; j>0; j--){
+
+    str += "*";
+
+  }
+
+  str += "\n";
 
 }
 
 
 
-for(var i=4; i>0; i--){
-
-  for(var j=i; j>0; j--){
-
-    str+= "*";
-
-  }
-
-  console.log(str);
-
-  str = "";
-
-}
+console.log(str)
 
 
 /*
@@ -178,12 +175,14 @@ for (var i = 0; i < myJSON.length; i++) {
 }
 
 //printing Title and Id using For In loop
+
 for (var i in myJSON) {
   console.log("Title: ", myJSON[i].title);
   console.log("Description: ", myJSON[i].description + "\n ");
 }
 
 //Printing Title and Curated data using For Of loop
+
 for (var i of myJSON) {
   console.log("Title: ", i.title);
   console.log("Curated: ", i.curated +"\n ");
