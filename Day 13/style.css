@@ -4,10 +4,10 @@ body {
 
   }
 
-  .container-fluid {
+  .outer-container {
     min-width: 100vw;
     min-height: 100vh;
-    padding: 2%;
+    padding: 2%, 4%;
     background-image: url(imgs/fireworks.avif);
     background-repeat: no-repeat;
     background-size: cover;
@@ -27,8 +27,15 @@ body {
     padding: 10%;
     justify-content: center;
     align-items: center;
-    font-size: 7vh;
-    margin: 25% 2%;
+    font-size: 7vw;
+    padding: 2% 4%;
+    margin: 10% 2%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
 
  em {

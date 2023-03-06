@@ -4,16 +4,18 @@ console.log(body);
 let h1 = document.createElement("h1");
 h1.innerText = "Countdown using SetTimeout and Callback hell";
 
+
 let container = document.createElement("div");
-container.setAttribute("class", "container-fluid");
+ container.className = "container-fluid outer-container";
 
 let innercontainer = document.createElement("div");
-innercontainer.setAttribute('class', 'inner-container');
+innercontainer.className = "container-fluid inner-container";
+
 let p = document.createElement("p");
 let em = document.createElement("em");
 p.append(em);
 innercontainer.append(p);
-container.append(innercontainer);
+container.append(h1, innercontainer);
 body.append(container);
 let countDown = 10;
 
