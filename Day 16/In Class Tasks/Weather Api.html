@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div class="comtainer">
+
+    <h1>Search Weather Data by City</h1>
+    <input type="text" id="city" placeholder="Enter City Name">
+    <button onclick="getCityWeatherData()">Search</button>
+</div>
+
+<div class ="container displayData"></div>
+<script>
+ 
+
+    async function getCityWeatherData(){
+        let cityName = document.getElementById("city").value;
+        console.log(cityName);
+        console.log(typeof cityName);
+
+        
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=c06ccd8a2975d59b60fa408468067d7c`;
+
+        let data = await fetch(url);
+        let res = await data.json();
+        console.log(res);
+
+        let displayDataContainer = document.getElementsByClassName("displayData")[0];
+        console.log(displayDataContainer);
+        displayDataContainer.innerHTML = `
+            <h4>${res.name} </h4>
+            <p>${res.weather[0].description}</p>
+            <p>Temp: ${Math.round(res.main.temp-274.15)} C </p>
+        `
+        }
+</script>
+</body>
+</html>

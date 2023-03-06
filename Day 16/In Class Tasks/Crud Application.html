@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let url = "https://63216654fd698dfa29f710fd.mockapi.io/user";
+
+        //getting specific user data
+
+        async function getUserData(){
+         let data =   await fetch(url);
+         let res = await data.json();
+         console.log(res);
+        }
+        getUserData();
+
+        //getting specified user data
+
+        async function getSpecificUserData(){
+            let data = await fetch(url+"/1");
+            let res = await data.json();
+            console.log(res);
+        }
+        getSpecificUserData(); 
+
+        // creating new user data
+
+        async function createNewUserData(){
+            let newUser = {
+                "name" : "Andrew Johnson",
+                "email" : "aj@gmail.com"
+            }
+            let data = await fetch(url, {
+                method: "POST",
+                headers: {"content-type" : "application/json"},
+                body: JSON.stringify(newUser)
+            })
+
+            let res = await data.json();
+            console.log(res);
+        }
+        createNewUserData()
+
+
+
+
+        async function updateUserData(){
+            
+        let userData = {
+            "name" : "Jasmine Johnson",
+            "email" : "jasmine@gmail.com"
+        }
+
+            let data = await fetch(url+"/11", {
+                method: "PUT",
+                headers: {"content-type" : "application/json"},
+                body: JSON.stringify(userData)
+            });
+            let res = await data.json();
+            console.log(res);
+
+        }
+        updateUserData();
+
+        async function deleteUserData(){
+            let data = await fetch(url+"/13", {
+                method: "delete"
+            }); 
+            let res = await data.json();
+            console.log(data);
+
+        }
+    </script>
+</body>
+</html>
