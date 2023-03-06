@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table{
+            border: 2px solid black;
+            background-color: aliceblue;
+            padding: 2%;
+        }
+
+       input[type=text], input[type=date], input[type=email], input[type=password], 
+       input[type=number], input[type=tel], input[type=file], input[type=color],
+       input[type=range]{
+            width: 95%;
+            border: none;
+            border-bottom: 2px solid aqua;
+            border-right: 2px solid aqua;
+            font-weight: 600;
+            text-align: justify;
+            color: cornflowerblue;
+            border-radius: 0%;
+        }
+
+        input[type=submit], input[type=reset]{
+            border: none;
+            background-color: royalblue;
+            color: azure;
+            padding: 3%;
+            border-radius: 20%;
+            border-top-left-radius: 50%;
+        }
+
+        input[type=checkbox]::-ms-ticks-after:checked{
+            background-color: red;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <thead>
+                <th colspan="6">Form with values</th>
+            </thead>
+            <tbody>
+                <form action="" method="get">
+                    <tr>
+                        <td colspan="2"><label for="fname">First Name</label></td>
+                        <td colspan="4"><input type="text" name="fname" id="fname" value="John" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><label for="lname">Last Name</label></td>
+                        <td colspan="4"><input type="text" name="lname" id="lname" value="Smith" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><label for="Gender">Gender</label></td>
+
+                        <td colspan="2">
+                            <input type="radio" name="Gender" id="Male" value="Male" checked>
+                            <label for="Male">Male</label>
+                        </td>
+                        <td colspan="2">
+                            <input type="radio" name="Gender" id="Female" value="Female">
+                            <label for="Female">Female</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="6">Languages Spoken</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2">
+                        <input type="checkbox" name="language1" id="language1" value="English" checked>
+                        <label for="language1">English</label>
+                        </td>
+                        <td colspan="2">
+                            <input type="checkbox" name="language2" id="language2" value="French">
+                            <label for="language2">French</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2">
+                            <input type="checkbox" name="language3" id="language3" value="German">
+                            <label for="language3">German</label>
+                        </td>
+                        <td colspan="2">
+                            <input type="checkbox" name="language4" id="language4" value="Russian">
+                            <label for="language4">Russian</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2">
+                            <input type="checkbox" name="language5" id="language5" value="Dutch">
+                            <label for="language5">Dutch</label>
+                        </td>
+                        <td colspan="2">
+                            <input type="checkbox" name="language6" id="language6" value="Other">
+                            <label for="language6">Other</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Marital Status</td>
+                        <td colspan="1">
+                            <input type="radio" name="MaritalStatus" id="Single" value="Single" checked="checked">
+                            <label for="Single">Single</label>
+                        </td>
+                        <td colspan="1">
+                            <input type="radio" name="MaritalStatus" id="Married" value="Married">
+                            <label for="Married">Married</label>
+                        </td>
+                        <td colspan="1">
+                            <input type="radio" name="MaritalStatus" id="Divorced" value="Divorced">
+                            <label for="Divorced">Divorced</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><label for="birthday">D.O.B.</label></td>
+                        <td colspan="4"><input type="date" name="birthday" id="birthday" value="2000-08-25" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><label for="Email">Email</label></td>
+                        <td colspan="4"><input type="email" name="Email" id="Email" placeholder="Enter Email"  value="xxx@xyz.com" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><label for="Pword">Password</label></td>
+                        <td colspan="4"><input type="password" name="Pword" id="Pword" placeholder="Enter Password" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><label for="TelephoneNumber">Phone No</label></td>
+                        <td colspan="4"><input type="tel" name="TelephoneNumber" id="TelephoneNumber" placeholder="Enter Mobile Number" required></td>
+                    </tr>
+                    <tr>    
+                        <td colspan="2"><label for="Address">Address</label></td>
+                        <td colspan="4"><input type="text" name="StreetAddress" id="StreetAddress" placeholder="Enter door number & street" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2"><input type="text" name="cityAddress" id="cityAddress" placeholder="City" required></td>
+                        <td colspan="2"><input type="text" name="stateAddress" id="stateAddress" placeholder="State" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2"></td>
+                        <td colspan="2"><input type="number" name="ZipAddress" id="ZipAddress" placeholder="Zip Code" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><label for="file">Upload File</label></td>
+                        <td colspan="4"><input type="file" name="myfile" id="myfile"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">Fav Colour</td>
+                        <td colspan="4"><input type="color" name="favColour" id="faveColour" value="#1a6259" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td colspan="2"></td>
+                        <td colspan="1"><input type="submit" value=" Submit "></td>
+                        <td colspan="1"><input type="reset" value="  Reset  "></td>
+                    </tr>
+                 
+                </form>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
