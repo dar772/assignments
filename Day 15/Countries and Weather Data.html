@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    
+    <title>Document</title>
+
+    <style>
+
+        .card{
+            border: 3px solid black;
+        }
+
+        img{
+           /* max-width: 25%;
+            max-height: 30%;*/
+            border: 1px solid black;
+            width: 100%;
+        
+         
+        }
+        .imgContainer{
+            border: 2px solid black;
+            
+        }
+    
+        .outer-container{
+         
+        }
+        
+
+        .card-body{
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        let countriesURL = `https://restcountries.com/v2/all`;
+     //   let weatherURL = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=c06ccd8a2975d59b60fa408468067d7c`;
+
+        async function getCountriesData(){
+            let data = await fetch(countriesURL);
+            let res =  await data.json();
+            console.log(res);
+
+            let body = document.getElementsByTagName('body')[0];
+            console.log(body)
+          
+          /*  let imgSRC = res[77].flags.svg;
+            let img = document.createElement("img");
+            img.setAttribute("src", imgSRC)
+            body.append(img)
+            */
+          
+            let container = document.createElement('div');
+            container.className = "container-fluid outer-container row col-lg-4 col-sm-12";
+            body.append(container);
+
+            
+            for(i=0; i<res.length; i++){
+                let card = document.createElement('div');
+                card.className = "card ";
+
+
+                //card header or country title
+                let cardHeader = document.createElement('h3');
+                cardHeader.setAttribute("class", "card-header");
+                cardHeader.innerText = res[i].name;
+                card.append(cardHeader);
+            
+                //testing if country name is printing in console
+                if(i==77){
+                    console.log(res[i].name)
+                }
+                
+                //card body
+                let cardBody = document.createElement('div');
+                cardBody.setAttribute("class", "card-body"); 
+
+                let imgContainer = document.createElement('div');
+                imgContainer.className = "container-fluid";
+
+                //IMG Flag data
+                let flagIMG = document.createElement('img');
+                let srcValue = res[i].flags.svg;
+                let altValue = res[i].name;
+                flagIMG.setAttribute("src", srcValue);
+                flagIMG.setAttribute("alt", altValue);
+                imgContainer.append(flagIMG);
+
+                let countryData = document.createElement('div');
+                countryData.setAttribute('class', 'container-fluid');
+
+                //Capital
+                let capital = document.createElement("p");
+                capital.innerText = res[i].capital;
+
+                //Region
+                let region = document.createElement('p');
+                region.innerText = res[i].region;
+
+                //Country Code
+                let code = document.createElement('p')
+                code.innerText = res[i].alpha3Code;
+
+                countryData.append(capital, region, code);
+                cardBody.append(imgContainer, countryData)
+                card.append(cardBody);
+
+               /* if(res[i].cioc == undefined || res[i].region == undefined || res[i].capital == undefined){
+                    console.log(res[i]);
+                }*/
+
+                if(res[i].capital == undefined){
+                    capital.innerText = `Unknown`; 
+                }
+
+                let weatherButton = document.createElement('button');
+                weatherButton.setAttribute('class', 'btn-primary')
+                weatherButton.innerText= "View Weather";
+                weatherButton.addEventListener('click', ()=>{
+                
+                 let location = capital.innerText;
+                 console.log(location);
+
+                 //async funtion to Get Weather Data from Wather Api
+
+                 async function getWeatherData(){
+                /* let location = capital.innerText;
+                 console.log(location);*/
+
+                 let weatherURL =  `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=c06ccd8a2975d59b60fa408468067d7c`;
+                 let weatherData = await fetch(weatherURL);
+                 let weatherRes = await weatherData.json();
+                
+                
+
+            
+
+                if(weatherButton.innerText == "View Weather"){
+                let celsius = `&#8451`;
+                 countryData.innerHTML = `
+                 <p>${location}</p>
+                 <p>Current Weather: ${weatherRes.weather[0].description.toUpperCase()}</p>
+                 <p>${Math.round(weatherRes.main.temp - 273.15)}${celsius}</p>
+                    `;
+                 console.log(weatherRes);
+                 weatherButton.innerText = "View Country Info"; 
+                }else{
+                    /*countryData.innerHTML = `${capital}
+                    ${region.innerHTML};
+                    ${code.innerHTML};
+                    `;*/
+                    countryData.innerHTML = ``;
+                    countryData.append(capital, region, code);
+                    console.log(capital, region, code, "hello");
+                    console.log(countryData);
+                    weatherButton.innerText = "View Weather";
+                }
+            }
+                getWeatherData();
+
+             })
+                cardBody.append(weatherButton);
+
+
+                /*
+                card.innerHTML = `
+                 <h3>${res[i].name}</h3>
+                 <img src="${res[i].flags.svg}" alt="${res[i].name} flag" srcset="">
+                 <p>Capital: ${res[i].capital}</p>
+                 <p>Region: ${res[i].region}</p>
+                 <p>Country Code: ${res[i].cioc}
+                `;*/
+
+                container.append(card);
+            }
+
+        }
+        getCountriesData();
+    </script>
+</body>
+</html>
