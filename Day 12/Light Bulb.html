@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .myContainer{
+            border: 2px solid red;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .myImgContainer{
+            background-color: black;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border:  3px solid blue;
+            width: 50%;
+            height: 100%;
+        }
+
+        img{
+            width: 35%;
+            height: 100%;
+            object-fit: scale-down;
+        }
+
+        .buttonContainer{
+            background-color: black;
+            border: 3px solid green;
+            width: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button{
+            width: 100%;
+            background-color: cornflowerblue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <script>
+        let myContainer = document.createElement('div');
+        myContainer.setAttribute("class", "myContainer");
+
+
+        let myImgContainer = document.createElement('div');
+        myImgContainer.setAttribute("class", "myImgContainer");
+
+        let img = document.createElement('img');
+        img.setAttribute('src', "imgs/lightbulboff.jpg");
+        myImgContainer.append(img);
+
+        let button = document.createElement("button");
+        button.setAttribute("value", "Turn On");
+        button.textContent = "Turn On";
+
+        let buttonContainer = document.createElement('div');
+        buttonContainer.setAttribute("class", "buttonContainer");
+        buttonContainer.append(button);
+        
+        button.addEventListener('click', ()=>{
+            let myBtnContent = button.textContent;
+            console.log(myBtnContent)
+
+            if(myBtnContent == "Turn On"){
+                button.textContent = "Turn Off";
+                img.src = "imgs/lightbulbon.jpg";
+            }else{
+                button.textContent = "Turn On";
+                img.src = "imgs/lightbulboff.jpg"
+            }
+        });
+
+
+        myContainer.append(myImgContainer, buttonContainer);
+        let body = document.getElementsByTagName("body");
+        body[0].appendChild(myContainer);
+
+
+    </script>
+</body>
+</html>
