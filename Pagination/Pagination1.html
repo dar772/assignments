@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagination</title>
+  </head>
+  <body>
+    
+    <script>
+      let body = document.getElementsByTagName("body")[0];
+      body.style.backgroundColor = "wheat";
+
+      let header = document.createElement("header");
+      let main = document.createElement("main");
+      main.textContent = "I am visible";
+      let footer = document.createElement("footer");
+
+      let displayContainer = document.createElement("div");
+      let PaginationBtnsDiv = document.createElement("nav");
+      PaginationBtnsDiv.innerText = "i am for buttons"
+      let prevBtn = document.createElement("button");
+      prevBtn.innerHTML = "&lt";
+      let nextBtn = document.createElement("button");
+      nextBtn.innerHTML = "&gt";
+
+
+      //Retriving Pokemon userData
+      let url = "http://pokeapi.co/api/v2/pokemon/?limit=20";
+      async function getData() {
+        let PokemonData = [];
+        let data = await fetch(url);
+        let res = await data.json();
+        let myData = res;
+        // console.log(myData);
+
+        for (i = 0; i < myData.results.length; i++) {
+          let pokemonName = myData.results[i].name;
+          let pokemonImg = myData.results[i].url;
+
+          data = await fetch(myData.results[i].url);
+          res = await data.json();
+          pokemonImgURL = res.sprites.front_default;
+          PokemonData.push([pokemonName, pokemonImgURL]);
+        }
+
+        console.log(PokemonData);
+
+        function capitaliseName(name) {
+          name = name[0].toUpperCase() + name.slice(1);
+          return name;
+        }
+         
+        
+        let numberOfItemsPerPage = 5;
+        let numberOfPages = Math.ceil(PokemonData.length / numberOfItemsPerPage);
+        let currentPage = 1;
+
+        let pokemonItemHTMLElements = [];
+
+
+        //creating buttons
+        let PaginationBtnElements = [];
+        for(i=1; i<= numberOfPages; i++){
+          let btn = document.createElement("button");
+          btn.innerText= i;
+
+          
+          btn.addEventListener('click', (e)=>{
+            let currentPage = e.target.innerText;
+            displayContainer.innerHTML = "";
+
+            console.log(currentPage, "current page")
+            
+            for(i = (currentPage*numberOfItemsPerPage) - numberOfItemsPerPage; (i < currentPage*numberOfItemsPerPage); i++){
+              displayContainer.append(pokemonItemHTMLElements[i]);
+            }
+          });
+          PaginationBtnElements.push(btn);
+        }
+
+       PaginationBtnElements.forEach((e) => {
+       PaginationBtnsDiv.append(e);
+       console.log(e);
+        });
+
+
+        //To store HTML data of each Pokemon, so it is easier to access
+
+        //Data retrieved & ready in html elements
+        for (i = 0; i < PokemonData.length; i++) {
+          let pokemonItemDiv = document.createElement("div");
+          let pokemonHeader = document.createElement("p");
+          pokemonHeader.innerText = capitaliseName(PokemonData[i][0]);
+          let pokemonImg = document.createElement("img");
+          pokemonImg.setAttribute("src", PokemonData[i][1]);
+          pokemonItemDiv.append(pokemonHeader, pokemonImg);
+          pokemonItemHTMLElements.push(pokemonItemDiv)
+
+         //  displayContainer.append(pokemonItemDiv)
+         // main.append(displayContainer);
+        }
+            
+
+        //create buttons
+        
+      }getData();
+
+      main.append(displayContainer, PaginationBtnsDiv);
+      body.append(header, main, footer);
+    </script>
+  </body>
+</html>
