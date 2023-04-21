@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+   <script>
+    class UberPayment{
+  
+  constructor(DistanceTraveled, WaitingTime, RatePerKMTraveled){
+    this.DistanceTraveled = DistanceTraveled;
+    this.RatePerKMTraveled = 10;
+  }
+  
+  price = 0;
+  
+  getPrice(){
+    if(this.DistanceTraveled < 20){
+    this.price = this.DistanceTraveled * this.RatePerKMTraveled;
+    return `${this.price} is your payment. You have travelled ${this.DistanceTraveled} KMs. \n Thank you for your service`;
+    }else{
+      this.price = this.DistanceTraveled * this.RatePerKMTraveled;
+      this.price = this.applyDiscount();
+      return `${this.price} is your payment after Discount. You have travelled ${this.DistanceTraveled} KMs. \n Thank you for your service!`;
+    }
+  }
+
+  applyDiscount(){
+      this.price = this.price - (this.price*10/100);
+      return this.price;
+  }
+}
+let customer1 = new UberPayment(12);
+let customer2 = new UberPayment(25);
+let customer3 = new UberPayment(30);
+
+console.log(customer1.getPrice()); //120
+console.log(customer2.getPrice()); //225
+console.log(customer3.getPrice()); //270
+   </script> 
+</body>
+</html>
