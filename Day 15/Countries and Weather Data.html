@@ -12,13 +12,13 @@
 
         .card{
             border: 3px solid black;
+            background-image: linear-gradient(aliceblue, thistle);
         }
 
         img{
-           /* max-width: 25%;
-            max-height: 30%;*/
             border: 1px solid black;
             width: 100%;
+            height: 20em;
         
          
         }
@@ -28,13 +28,49 @@
         }
     
         .outer-container{
-         
+         display: grid;
+         grid-template-columns: auto auto auto;
+         grid-gap: 2px;
         }
         
 
         .card-body{
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
+        }
+
+        .card-data > p{
+            text-align: center;
+            font-weight: bold;
+
+        }
+
+        .btn-primary, .btn-primary:active, .btn-primary:visited{
+            background-color: lightgoldenrodyellow;
+            color: black;
+            font-weight: 900;
+            border: 2px solid grey;
+            border-radius: 5%;
+            box-shadow: none;
+            outline-offset: none;
+        }
+
+        .btn-primary:hover{
+            background-color: blanchedalmond;
+            color: black;
+        }
+
+        @media screen and (max-width: 600px){
+            .outer-container{
+                display: flex;
+                flex-flow: column;
+                justify-content: center;
+                align-items: center;
+
+            }
+            
         }
     </style>
 </head>
@@ -58,7 +94,7 @@
             */
           
             let container = document.createElement('div');
-            container.className = "container-fluid outer-container row col-lg-4 col-sm-12";
+            container.className = "container-fluid outer-container";
             body.append(container);
 
             
@@ -94,7 +130,7 @@
                 imgContainer.append(flagIMG);
 
                 let countryData = document.createElement('div');
-                countryData.setAttribute('class', 'container-fluid');
+                countryData.setAttribute('class', 'container-fluid card-data');
 
                 //Capital
                 let capital = document.createElement("p");
@@ -121,7 +157,7 @@
                 }
 
                 let weatherButton = document.createElement('button');
-                weatherButton.setAttribute('class', 'btn-primary')
+                weatherButton.setAttribute('class', 'btn btn-primary')
                 weatherButton.innerText= "View Weather";
                 weatherButton.addEventListener('click', ()=>{
                 
