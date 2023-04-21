@@ -112,7 +112,7 @@ let myEvensIIFE = (function(arr){
 })(arr);
 
 
-__________________________________________________________
+__________________________________________________________
 __________________________________________________________
 
 
@@ -195,3 +195,271 @@ console.log(`Sum of all nums using Arrow function ${mySumArrow(arr)}`);
   console.log(`Sum of all nums using IIFE function ${total}`);
 
 })(arr);
+
+
+
+
+
+________________________________________________________________________
+________________________________________________________________________
+
+
+let arr = ["apple", "mango", "orange", "strawberry", "banana", "blueberry", "sapodilla"];
+let arr1 = ["Blue", "Yellow", "Green", "Violet", "Red", "Pink", "Orange"];
+
+//Print the Median element of two sorted arrays of the same size using normal function;
+
+arr.sort();
+arr1.sort();
+arr = arr.concat(arr1);
+
+function Median(arr){
+  
+  if(arr.length % 2 === 0){
+    console.log(arr[arr.length/2-1], ",", arr[arr.length/2])
+  }else{
+    console.log(arr[Math.floor(arr.length/2)]);
+  }
+}
+Median(arr);
+
+// Output: strawberry, Blue
+
+
+// Print the Median element using Anonymous Function
+
+let Median = function (arr){
+
+  if(arr.length % 2 === 0){
+    console.log(arr[arr.length/2-1], ",", arr[arr.length/2])
+  }else{
+    console.log(arr[Math.floor(arr.length/2)]);
+  }
+}
+Median(arr);
+
+// Output: strawberry, Blue
+
+
+
+
+
+// Print the Median element of two sorted arrays using Arrow Function
+
+let Median = (arr)=>{
+
+  if(arr.length % 2 === 0){
+    console.log(arr[arr.length/2-1], ",", arr[arr.length/2]);
+  }else{
+    console.log(arr[Math.floor(arr.length/2)]);
+  }
+}
+Median(arr);
+
+// Output: strawberry, Blue
+
+
+
+
+// Print the Median Element of two sorted arrays using IIFE Function
+
+(function(arr){
+  let length = arr.length;
+  if(arr.length % 2 === 0){
+    console.log(arr[arr.length/2-1], ",", arr[arr.length/2])
+  }else{
+    console.log(arr[Math.floor(arr.length/2)]);
+  }
+})(arr);
+
+// Output: strawberry, Blue
+
+
+________________________________________________________________________
+________________________________________________________________________
+
+
+
+
+
+let arr = ["Anna", "Mom", "Dad", "Markram", "Apple", "Mango", "Banana", "Strawberry"];
+
+// Print the Palindromes in an Array using Function
+
+function palindrome(arr){
+  let palindromeElements = [];
+  
+  for(i=0; i<arr.length; i++){
+   if(arr[i].length > 1){
+     let x = arr[i];
+     x = x.toLowerCase();
+     x = x.split('');
+     x = x.reverse();
+     x = x.join('');
+     if(x === arr[i].toLowerCase()){
+       palindromeElements.push(x);
+     }
+   }
+  }
+  
+  console.log(...palindromeElements)
+}
+
+palindrome(arr);
+
+// Output: anna mom dad markram
+
+
+
+//Print the palindromes in an Array using anonymous Function
+
+let palindrome = function(arr){
+  let palindromeElements = [];
+  
+  for(i=0; i<arr.length; i++){
+   if(arr[i].length > 1){
+     let x = arr[i];
+     x = x.toLowerCase();
+     x = x.split('');
+     x = x.reverse();
+     x = x.join('');
+     if(x === arr[i].toLowerCase()){
+       palindromeElements.push(x);
+     }
+   }
+  }
+  
+  console.log(...palindromeElements)
+}
+
+palindrome(arr);
+
+// Output: anna mom dad markram
+
+
+
+//Print the Palindromes in an array using Arrow function
+
+
+let palindrome = (arr)=>{
+  let palindromeElements = [];
+  
+  for(i=0; i<arr.length; i++){
+   if(arr[i].length > 1){
+     let x = arr[i];
+     x = x.toLowerCase();
+     x = x.split('');
+     x = x.reverse();
+     x = x.join('');
+     if(x === arr[i].toLowerCase()){
+       palindromeElements.push(x);
+     }
+   }
+  }
+  
+  console.log(...palindromeElements)
+}
+
+palindrome(arr);
+
+// Output: anna mom dad markram
+
+
+
+
+// Print the Palindromes in an array using IIFE function
+
+
+(function palindrome(arr){
+  let palindromeElements = [];
+  
+  for(i=0; i<arr.length; i++){
+   if(arr[i].length > 1){
+     let x = arr[i];
+     x = x.toLowerCase();
+     x = x.split('');
+     x = x.reverse();
+     x = x.join('');
+     if(x === arr[i].toLowerCase()){
+       palindromeElements.push(x);
+     }
+   }
+  }
+  
+  console.log(...palindromeElements)
+})(arr);
+
+
+// Output: anna mom dad markram
+
+_______________________________________________________________
+_______________________________________________________________
+
+
+
+let arr = ["Red", "Yellow", "Blue", "Green", "Pink"];
+
+// Rotate an array K times using a Normal function
+function Rotate(arr, k){
+  for(i=0; i<k; i++){
+    let x = arr.pop();
+    arr.unshift(x);
+  }
+  console.log(...arr);
+}
+Rotate(arr, 7);
+
+// Output: Green Pink Red Yellow Blue
+
+
+
+
+// Rotate an array K times using an Anonymous Function
+
+let Rotate = function(arr, k){
+  for(i=0; i<k; i++){
+    let x = arr.pop();
+    arr.unshift(x);
+  }
+  console.log(...arr);
+}
+Rotate(arr, 7);
+
+// Output: Green Pink Red Yellow Blue
+
+
+
+// Rotate an array K times using an Arrow Function
+
+let Rotate = (arr, k)=>{
+  for(i=0; i<k; i++){
+    let x = arr.pop();
+    arr.unshift(x);
+  }
+  console.log(...arr);
+}
+Rotate(arr, 7);
+
+// Output: Green Pink Red Yellow Blue
+
+
+
+// Rotate an array K times using an IIFE Function
+
+((arr, k)=>{
+  for(i=0; i<k; i++){
+    let x = arr.pop();
+    arr.unshift(x);
+  }
+  console.log(...arr);
+})(arr, 7);
+
+// Output: Green Pink Red Yellow Blue
+
+
+
+
+
+________________________________________________________________
+________________________________________________________________
+
