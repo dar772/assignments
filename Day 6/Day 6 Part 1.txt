@@ -81,7 +81,7 @@ const num = [10, 20, 30, 40,50,60,70,80,90,100]
 let sum = (a, b) =>
  a + b
 sum = num.reduce(sum);
-console.log(sum);//550
+console.log(sum); //550
 
 
 
@@ -90,7 +90,19 @@ _____________________
 
 
 7. Fix the code to rotate an array by k times and return rotated array using IIFE function
-
+var arr = [1, 2, 3, 6, 8, 6, 1, 9, 10, 12, 13];
+var k = 3;
+k = arr.length % k;
+(function(){
+ out = arr.slice(k + 1, arr.length);
+ var count = out.length;
+ for (var i = 0; i < k + 1; i++) {
+ out[count] = arr[i];
+ count += 1;
+ }
+ console.log(...out);
+})();  
+// 6 8 6 1 9 10 12 13 1 2 3
 
 
 _____________________
@@ -129,17 +141,56 @@ _____________________
 _____________________
 
 
-11. Sum of odd numbers in an array.
+11. Fix the code to give the below output:
 
+[
+  { firstname: 'vasanth', lastname: 'Raje', age: 24, role: 'JSWizard' },
+  { firstname: 'Sri', lastname: 'Devi', age: 28, role: 'Coder' }
+]
 
+var array =[[['firstname','vasanth'],['lastname','Raje'],['age',24],['role','JSWizard']],
+[['firstname','Sri'],['lastname','Devi'],['age',28],['role', 'Coder']]];
+
+var final=[]
+while(array.length!=0){
+ var outer_remove = array.shift();
+ var new_object = new Object();
+
+ while(outer_remove.length!=0){
+   
+ var inner_remove = outer_remove.shift();
+ var key = inner_remove[0];
+ var value =inner_remove[1]; 
+
+ new_object[key]= value;
+ }
+ final.push(new_object)
+}
+
+console.log(final); 
+
+// output: 
+
+[
+  { firstname: 'vasanth', lastname: 'Raje', age: 24, role: 'JSWizard' },
+  { firstname: 'Sri', lastname: 'Devi', age: 28, role: 'Coder' }
+]
 
 _____________________
 
 
-12. Swap the odd and even digits. 
+12. Fix the code to give the Sum of odd numbers in an array
 
+
+var as = [12,34,5,6,2,56,6,2,1];
+var sum = as.reduce(function(a=0, c){
+ if(c % 2 != 0){
+ return a + c;
+ }
+ return a;
+ }, 0);
+console.log(sum);
 
 
 _____________________
-
 
